@@ -95,7 +95,8 @@ class TlsOpenSslPrivate {
   std::string dhfile_;
   std::string cipherlist_;
   bool verify_peer_;
-  /* *************** */
+  std::shared_ptr<ConfigResourcesContainer>
+      config_table_;  // config table being used
 };
 
 #endif  // BAREOS_LIB_TLS_OPENSSL_PRIVATE_H_

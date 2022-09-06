@@ -61,6 +61,7 @@ TlsOpenSslPrivate::TlsOpenSslPrivate()
     , pem_callback_(nullptr)
     , pem_userdata_(nullptr)
     , verify_peer_(false)
+    , config_table_(nullptr)
 {
   Dmsg0(100, "Construct TlsOpenSslPrivate\n");
 

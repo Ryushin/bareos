@@ -75,7 +75,11 @@ void TlsOpenSsl::SetTlsPskServerContext(ConfigurationParser* config)
   } else if (!config) {
     Dmsg0(50, "Could not prepare TLS_PSK SERVER callback (no config)\n");
   } else {
-    Dmsg0(50, "Preparing TLS_PSK SERVER callback\n");
+    // store a shared pointer to the resources table currently used in the
+    // private data so that it is freed when the TLS Private Context is freed
+    d_->config_table_ = config->GetResourcesTablePointer();
+    Dmsg1(50, "Preparing TLS_PSK SERVER callback, config table pointer is %p\n",
+          d_->config_table_->configuration_resources_);
     SSL_CTX_set_ex_data(
         d_->openssl_ctx_,
         TlsOpenSslPrivate::SslCtxExDataIndex::kConfigurationParserPtr,
