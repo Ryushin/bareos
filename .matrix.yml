@@ -3,6 +3,32 @@ JENKINS_TESTTYPES:
   - univention-bareos
 
 OS:
+  Sanitize:
+    "F36":
+      TYPE: scripted
+      IMAGE: fedora36
+      BUILD_SCRIPT: CD/sanitize/build-sanitize.sh
+      FINISH_SCRIPT: CD/sanitize/finish-sanitize.sh
+      BUILD_FOR_VERSIONS:
+        - bareos-22
+      ARCH:
+        - x86_64
+      PROJECTPACKAGES:
+        x86_64:
+          - bareos
+    "EL9":
+      TYPE: scripted
+      IMAGE: centos9
+      BUILD_SCRIPT: CD/sanitize/build-sanitize.sh
+      FINISH_SCRIPT: CD/sanitize/finish-sanitize.sh
+      BUILD_FOR_VERSIONS:
+        - bareos-22
+      ARCH:
+        - x86_64
+      PROJECTPACKAGES:
+        x86_64:
+          - bareos
+
   ULC_deb:
     "OpenSSL_1.1":
       TYPE: scripted
