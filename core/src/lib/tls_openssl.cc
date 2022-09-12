@@ -75,8 +75,8 @@ void TlsOpenSsl::SetTlsPskServerContext(ConfigurationParser* config)
   } else if (!config) {
     Dmsg0(50, "Could not prepare TLS_PSK SERVER callback (no config)\n");
   } else {
-    // store a shared pointer to the resources table currently used in the
-    // private data so that it is freed when the TLS Private Context is freed
+    // keep a shared_ptr to the current config, so a reload won't
+    // free the memory we're going to use in the private context
     d_->config_table_ = config->GetResourcesTablePointer();
     Dmsg1(50, "Preparing TLS_PSK SERVER callback, config table pointer is %p\n",
           d_->config_table_->configuration_resources_);
