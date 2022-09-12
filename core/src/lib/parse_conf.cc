@@ -504,7 +504,7 @@ ConfigurationParser::BackupResourceTable()
 }
 
 std::shared_ptr<ConfigResourcesContainer>
-ConfigurationParser::GetResourcesTablePointer()
+ConfigurationParser::GetResourcesTable()
 {
   return config_resources_container_;
 }
