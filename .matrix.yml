@@ -4,6 +4,18 @@ JENKINS_TESTTYPES:
 
 OS:
   Sanitize:
+    "F37":
+      TYPE: scripted
+      IMAGE: fedora37
+      BUILD_SCRIPT: CD/sanitize/build-sanitize.sh
+      FINISH_SCRIPT: CD/sanitize/finish-sanitize.sh
+      BUILD_FOR_VERSIONS:
+        - bareos-22
+      ARCH:
+        - x86_64
+      PROJECTPACKAGES:
+        x86_64:
+          - bareos
     "F36":
       TYPE: scripted
       IMAGE: fedora36
