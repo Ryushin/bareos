@@ -58,7 +58,7 @@ static ndmp_backup_format_option ndmp_backup_format_options[] = {
     {(char*)"zfs", false, true, false, true},
     {(char*)"vbb", false, true, false, true},
     {(char*)"image", false, true, false, true},
-    {NULL, false, false, false}};
+    {NULL, false, false, false, false}};
 
 /**
  * find ndmp_backup_format_option for given format

@@ -423,11 +423,11 @@ int CreateFile(JobControlRecord* jcr,
           return CF_CREATED;
 #endif
       } /* End inner switch */
-
+      [[fallthrough]];
     case FT_REPARSE:
     case FT_JUNCTION:
       bfd->reparse_point = true;
-      // Fall through wanted
+      [[fallthrough]];
     case FT_DIRBEGIN:
     case FT_DIREND:
       Dmsg2(200, "Make dir mode=%04o dir=%s\n", (new_mode & ~S_IFMT),

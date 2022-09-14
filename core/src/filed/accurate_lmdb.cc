@@ -38,8 +38,9 @@ static int debuglevel = 100;
 #  define AVG_NR_BYTES_PER_ENTRY 256
 #  define B_PAGE_SIZE 4096
 
-BareosAccurateFilelistLmdb::BareosAccurateFilelistLmdb(JobControlRecord* jcr,
-                                                       uint32_t number_of_files)
+BareosAccurateFilelistLmdb::BareosAccurateFilelistLmdb(
+    [[maybe_unused]] JobControlRecord* jcr,
+    uint32_t number_of_files)
 {
   filenr_ = 0;
   pay_load_ = GetPoolMemory(PM_MESSAGE);
@@ -134,7 +135,7 @@ bail_out:
 }
 
 bool BareosAccurateFilelistLmdb::AddFile(char* fname,
-                                         int fname_length,
+                                         [[maybe_unused]] int fname_length,
                                          char* lstat,
                                          int lstat_length,
                                          char* chksum,

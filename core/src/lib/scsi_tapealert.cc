@@ -172,7 +172,9 @@ bool GetTapealertFlags(int fd, const char* device_name, uint64_t* flags)
   return false;
 }
 #else
-bool GetTapealertFlags(int fd, const char* device_name, uint64_t* flags)
+bool GetTapealertFlags([[maybe_unused]] int fd,
+                       [[maybe_unused]] const char* device_name,
+                       uint64_t* flags)
 {
   *flags = 0;
   return false;

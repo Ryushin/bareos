@@ -139,7 +139,7 @@ bail_out:
 
 // Finish initialization of the pocket structure.
 void BareosSocketTCP::FinInit(JobControlRecord* jcr,
-                              int sockfd,
+                              [[maybe_unused]] int sockfd,
                               const char* who,
                               const char* host,
                               int port,
@@ -162,7 +162,7 @@ void BareosSocketTCP::FinInit(JobControlRecord* jcr,
 bool BareosSocketTCP::open(JobControlRecord* jcr,
                            const char* name,
                            const char* host,
-                           char* service,
+                           [[maybe_unused]] char* service,
                            int port,
                            utime_t heart_beat,
                            int* fatal)

@@ -227,7 +227,7 @@ static void CallbackThreadTimer(watchdog_t* self)
   pthread_kill(wid->tid, TIMEOUT_SIGNAL);
 }
 
-static btimer_t* btimer_start_common(uint32_t wait)
+static btimer_t* btimer_start_common([[maybe_unused]] uint32_t wait)
 {
   btimer_t* wid = (btimer_t*)malloc(sizeof(btimer_t));
 

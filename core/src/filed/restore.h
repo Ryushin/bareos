@@ -64,8 +64,8 @@ struct r_ctx {
   alist<DelayedDataStream*>* delayed_streams{nullptr};    /* streams that should be restored as last */
   SIGNATURE* sig{nullptr};            /* Cryptographic signature (if any) for file */
   CRYPTO_SESSION* cs{nullptr};        /* Cryptographic session data (if any) for file */
-  RestoreCipherContext cipher_ctx{0}; /* Cryptographic restore context (if any) for file */
-  RestoreCipherContext fork_cipher_ctx{0}; /* Cryptographic restore context (if any)
+  RestoreCipherContext cipher_ctx{}; /* Cryptographic restore context (if any) for file */
+  RestoreCipherContext fork_cipher_ctx{}; /* Cryptographic restore context (if any)
                                               for alternative stream */
 };
 /* clang-format on */

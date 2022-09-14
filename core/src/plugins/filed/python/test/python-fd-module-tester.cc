@@ -185,7 +185,7 @@ static filedaemon::CoreFunctions bareos_core_functions
 
 // create plugin context
 
-Plugin plugin = {(char*)"python-fd-module-tester", 123, NULL, NULL, NULL};
+Plugin plugin = {(char*)"python-fd-module-tester", 123, NULL, NULL, NULL, NULL};
 
 static PluginContext bareos_PluginContext = {0, &plugin, NULL, NULL};
 

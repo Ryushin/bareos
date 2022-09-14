@@ -391,7 +391,7 @@ void InitSignals(void Terminate(int sig))
 #  endif
 }
 
-extern "C" void TimeoutHandler(int sig)
+extern "C" void TimeoutHandler([[maybe_unused]] int sig)
 {
   return; /* thus interrupting the function */
 }

@@ -50,11 +50,15 @@ static bRC setXattr(PluginContext* ctx, xattr_pkt* xp);
 static CoreFunctions* bareos_core_functions = NULL;
 static PluginApiDefinition* bareos_plugin_interface_version = NULL;
 
-static PluginInformation pluginInfo
-    = {sizeof(pluginInfo), FD_PLUGIN_INTERFACE_VERSION,
-       FD_PLUGIN_MAGIC,    PLUGIN_LICENSE,
-       PLUGIN_AUTHOR,      PLUGIN_DATE,
-       PLUGIN_VERSION,     PLUGIN_DESCRIPTION};
+static PluginInformation pluginInfo = {sizeof(pluginInfo),
+                                       FD_PLUGIN_INTERFACE_VERSION,
+                                       FD_PLUGIN_MAGIC,
+                                       PLUGIN_LICENSE,
+                                       PLUGIN_AUTHOR,
+                                       PLUGIN_DATE,
+                                       PLUGIN_VERSION,
+                                       PLUGIN_DESCRIPTION,
+                                       nullptr};
 
 static PluginFunctions pluginFuncs
     = {sizeof(pluginFuncs), FD_PLUGIN_INTERFACE_VERSION,

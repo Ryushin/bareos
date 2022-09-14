@@ -402,7 +402,7 @@ void ConfigurationParser::StoreMsgs(LEX* lc,
 void ConfigurationParser::StoreName(LEX* lc,
                                     ResourceItem* item,
                                     int index,
-                                    int pass)
+                                    [[maybe_unused]] int pass)
 {
   POOLMEM* msg = GetPoolMemory(PM_EMSG);
 
@@ -863,7 +863,7 @@ void ConfigurationParser::StorePluginNames(LEX* lc,
  */
 void ConfigurationParser::StoreDefs(LEX* lc,
                                     ResourceItem* item,
-                                    int index,
+                                    [[maybe_unused]] int index,
                                     int pass)
 {
   BareosResource* res;
@@ -886,7 +886,7 @@ void ConfigurationParser::StoreDefs(LEX* lc,
 void ConfigurationParser::store_int16(LEX* lc,
                                       ResourceItem* item,
                                       int index,
-                                      int pass)
+                                      [[maybe_unused]] int pass)
 {
   LexGetToken(lc, BCT_INT16);
   SetItemVariable<int16_t>(*item, lc->u.int16_val);
@@ -898,7 +898,7 @@ void ConfigurationParser::store_int16(LEX* lc,
 void ConfigurationParser::store_int32(LEX* lc,
                                       ResourceItem* item,
                                       int index,
-                                      int pass)
+                                      [[maybe_unused]] int pass)
 {
   LexGetToken(lc, BCT_INT32);
   SetItemVariable<int32_t>(*item, lc->u.int32_val);
@@ -911,7 +911,7 @@ void ConfigurationParser::store_int32(LEX* lc,
 void ConfigurationParser::store_pint16(LEX* lc,
                                        ResourceItem* item,
                                        int index,
-                                       int pass)
+                                       [[maybe_unused]] int pass)
 {
   LexGetToken(lc, BCT_PINT16);
   SetItemVariable<uint16_t>(*item, lc->u.pint16_val);
@@ -923,7 +923,7 @@ void ConfigurationParser::store_pint16(LEX* lc,
 void ConfigurationParser::store_pint32(LEX* lc,
                                        ResourceItem* item,
                                        int index,
-                                       int pass)
+                                       [[maybe_unused]] int pass)
 {
   LexGetToken(lc, BCT_PINT32);
   SetItemVariable<uint32_t>(*item, lc->u.pint32_val);
@@ -936,7 +936,7 @@ void ConfigurationParser::store_pint32(LEX* lc,
 void ConfigurationParser::store_int64(LEX* lc,
                                       ResourceItem* item,
                                       int index,
-                                      int pass)
+                                      [[maybe_unused]] int pass)
 {
   LexGetToken(lc, BCT_INT64);
   SetItemVariable<int64_t>(*item, lc->u.int64_val);
@@ -949,7 +949,7 @@ void ConfigurationParser::store_int64(LEX* lc,
 void ConfigurationParser::store_int_unit(LEX* lc,
                                          ResourceItem* item,
                                          int index,
-                                         int pass,
+                                         [[maybe_unused]] int pass,
                                          bool size32,
                                          enum unit_type type)
 {
@@ -1049,7 +1049,7 @@ void ConfigurationParser::StoreSpeed(LEX* lc,
 void ConfigurationParser::StoreTime(LEX* lc,
                                     ResourceItem* item,
                                     int index,
-                                    int pass)
+                                    [[maybe_unused]] int pass)
 {
   utime_t utime;
   char period[500];
@@ -1091,7 +1091,7 @@ void ConfigurationParser::StoreTime(LEX* lc,
 void ConfigurationParser::StoreBit(LEX* lc,
                                    ResourceItem* item,
                                    int index,
-                                   int pass)
+                                   [[maybe_unused]] int pass)
 {
   LexGetToken(lc, BCT_NAME);
   char* bitvalue = GetItemVariablePointer<char*>(*item);
@@ -1113,7 +1113,7 @@ void ConfigurationParser::StoreBit(LEX* lc,
 void ConfigurationParser::StoreBool(LEX* lc,
                                     ResourceItem* item,
                                     int index,
-                                    int pass)
+                                    [[maybe_unused]] int pass)
 {
   LexGetToken(lc, BCT_NAME);
   if (Bstrcasecmp(lc->str, "yes") || Bstrcasecmp(lc->str, "true")) {
@@ -1134,7 +1134,7 @@ void ConfigurationParser::StoreBool(LEX* lc,
 void ConfigurationParser::StoreLabel(LEX* lc,
                                      ResourceItem* item,
                                      int index,
-                                     int pass)
+                                     [[maybe_unused]] int pass)
 {
   LexGetToken(lc, BCT_NAME);
   // Store the label pass 2 so that type is defined
@@ -1297,7 +1297,7 @@ void ConfigurationParser::StoreAddresses(LEX* lc,
 
 void ConfigurationParser::StoreAddressesAddress(LEX* lc,
                                                 ResourceItem* item,
-                                                int index,
+                                                [[maybe_unused]] int index,
                                                 int pass)
 {
   int token;
@@ -1321,7 +1321,7 @@ void ConfigurationParser::StoreAddressesAddress(LEX* lc,
 
 void ConfigurationParser::StoreAddressesPort(LEX* lc,
                                              ResourceItem* item,
-                                             int index,
+                                             [[maybe_unused]] int index,
                                              int pass)
 {
   int token;
@@ -1484,7 +1484,8 @@ void IndentConfigItem(PoolMem& cfg_str,
   PmStrcat(cfg_str, config_item);
 }
 
-std::string PrintNumberSiPrefixFormat(ResourceItem* item, uint64_t value_in)
+std::string PrintNumberSiPrefixFormat([[maybe_unused]] ResourceItem* item,
+                                      uint64_t value_in)
 {
   return SizeAsSiPrefixFormat(value_in);
 }
@@ -1603,7 +1604,7 @@ std::string MessagesResource::GetMessageTypesAsSring(MessageDestinationInfo* d,
 
 bool MessagesResource::PrintConfig(OutputFormatterResource& send,
                                    const ConfigurationParser& /* unused */,
-                                   bool hide_sensitive_data,
+                                   [[maybe_unused]] bool hide_sensitive_data,
                                    bool verbose)
 {
   PoolMem cfg_str; /* configuration as string  */
@@ -2034,7 +2035,7 @@ bool BareosResource::PrintConfig(OutputFormatterResource& send,
   int rindex;
 
   // If entry is not used, then there is nothing to print.
-  if (rcode_ < 0 || refcnt_ <= 0) { return true; }
+  if (refcnt_ <= 0) { return true; }
   rindex = rcode_;
 
   // don't dump internal resources.

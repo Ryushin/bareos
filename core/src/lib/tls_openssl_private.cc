@@ -428,7 +428,7 @@ cleanup:
 
 int TlsOpenSslPrivate::tls_pem_callback_dispatch(char* buf,
                                                  int size,
-                                                 int rwflag,
+                                                 [[maybe_unused]] int rwflag,
                                                  void* userdata)
 {
   TlsOpenSslPrivate* p = static_cast<TlsOpenSslPrivate*>(userdata);

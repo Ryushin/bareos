@@ -89,7 +89,7 @@ void DoVerify(JobControlRecord* jcr)
  */
 static int VerifyFile(JobControlRecord* jcr,
                       FindFilesPacket* ff_pkt,
-                      bool top_level)
+                      [[maybe_unused]] bool top_level)
 {
   PoolMem attribs(PM_NAME), attribsEx(PM_NAME);
   int status;

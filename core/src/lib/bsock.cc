@@ -58,8 +58,8 @@ BareosSocket::BareosSocket()
     , errors(0)
     , suppress_error_msgs_(false)
     , sleep_time_after_authentication_error(5)
-    , client_addr{0}
-    , peer_addr{0}
+    , client_addr{}
+    , peer_addr{}
     , connected_daemon_version_(BareosVersionNumber::kUndefined)
 
     /* protected: */
@@ -643,10 +643,11 @@ bool BareosSocket::DoTlsHandshakeWithClient(TlsConfigCert* local_tls_cert,
   return false;
 }
 
-bool BareosSocket::DoTlsHandshakeWithServer(TlsConfigCert* local_tls_cert,
-                                            const char* identity,
-                                            const char* password,
-                                            JobControlRecord* jcr)
+bool BareosSocket::DoTlsHandshakeWithServer(
+    TlsConfigCert* local_tls_cert,
+    [[maybe_unused]] const char* identity,
+    [[maybe_unused]] const char* password,
+    JobControlRecord* jcr)
 {
   if (BnetTlsClient(this, local_tls_cert->verify_peer_,
                     local_tls_cert->allowed_certificate_common_names_)) {
