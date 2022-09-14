@@ -934,7 +934,7 @@ DeviceControlRecord::ReadStatus DeviceControlRecord::ReadBlockFromDevice(
  *  or completely in the current buffer.
  */
 DeviceControlRecord::ReadStatus DeviceControlRecord::ReadBlockFromDev(
-    bool check_block_numbers)
+   [[maybe_unused]]  bool check_block_numbers)
 {
   ssize_t status;
   int looping;

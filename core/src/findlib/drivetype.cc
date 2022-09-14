@@ -74,7 +74,9 @@ bool Drivetype(const char* fname, char* dt, int dtlen)
 
 #else /* No recognised OS */
 
-bool Drivetype(const char* fname, char* dt, int dtlen)
+bool Drivetype([[maybe_unused]] const char* fname,
+               [[maybe_unused]] char* dt,
+               [[maybe_unused]] int dtlen)
 {
   Dmsg0(10, "!!! Drivetype() not implemented for this OS. !!!\n");
   return false;

@@ -37,7 +37,8 @@
 /*=============================================================*/
 
 #if !defined(HAVE_WIN32)
-int EnableBackupPrivileges(JobControlRecord* jcr, int ignore_errors)
+int EnableBackupPrivileges([[maybe_unused]] JobControlRecord* jcr,
+                           [[maybe_unused]] int ignore_errors)
 {
   return 0;
 }

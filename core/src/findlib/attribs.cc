@@ -496,9 +496,9 @@ bail_out:
  * The code below shows how to return nothing.  See the Win32
  *   code below for returning something in the attributes.
  */
-int encode_attribsEx(JobControlRecord* jcr,
+int encode_attribsEx([[maybe_unused]] JobControlRecord* jcr,
                      char* attribsEx,
-                     FindFilesPacket* ff_pkt)
+                     [[maybe_unused]] FindFilesPacket* ff_pkt)
 {
 #  ifdef HAVE_DARWIN_OS
   /**
@@ -599,11 +599,7 @@ int encode_attribsEx(JobControlRecord* jcr,
 #    define plug(st, val) st = (typeof st)val
 #  else
 // Use templates to do the casting
-template <class T>
-void plug(T& st, uint64_t val)
-{
-  st = static_cast<T>(val);
-}
+template <class T> void plug(T& st, uint64_t val) { st = static_cast<T>(val); }
 #  endif
 
 /**

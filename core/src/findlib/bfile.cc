@@ -957,12 +957,12 @@ bool have_win32_api() { return false; /* no can do */ }
  *   Returns true  if function worked
  *   Returns false if failed (i.e. do not have Backup API on this machine)
  */
-bool set_win32_backup(BareosWinFilePacket* bfd)
+bool set_win32_backup([[maybe_unused]] BareosWinFilePacket* bfd)
 {
   return false; /* no can do */
 }
 
-bool SetPortableBackup(BareosWinFilePacket* bfd)
+bool SetPortableBackup([[maybe_unused]] BareosWinFilePacket* bfd)
 {
   return true; /* no problem */
 }
@@ -971,12 +971,14 @@ bool SetPortableBackup(BareosWinFilePacket* bfd)
  * Return true  if we are writing in portable format
  * return false if not
  */
-bool IsPortableBackup(BareosWinFilePacket* bfd)
+bool IsPortableBackup([[maybe_unused]] BareosWinFilePacket* bfd)
 {
   return true; /* portable by definition */
 }
 
-bool set_prog(BareosWinFilePacket* bfd, char* prog, JobControlRecord* jcr)
+bool set_prog([[maybe_unused]] BareosWinFilePacket* bfd,
+              [[maybe_unused]] char* prog,
+              [[maybe_unused]] JobControlRecord* jcr)
 {
   return false;
 }
@@ -1125,10 +1127,10 @@ int BopenRsrc(BareosWinFilePacket* bfd,
   return bfd->fid;
 }
 #  else
-int BopenRsrc(BareosWinFilePacket* bfd,
-              const char* fname,
-              int flags,
-              mode_t mode)
+int BopenRsrc([[maybe_unused]] BareosWinFilePacket* bfd,
+              [[maybe_unused]] const char* fname,
+              [[maybe_unused]] int flags,
+              [[maybe_unused]] mode_t mode)
 {
   return -1;
 }

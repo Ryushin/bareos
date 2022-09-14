@@ -75,13 +75,14 @@ void TimerThreadTest::TearDown()
   if (stop_timer_thread_on_tear_down) { TimerThread::Stop(); }
 }
 
-void TimerThreadTest::TimerCallback(TimerThread::Timer* t)
+void TimerThreadTest::TimerCallback([[maybe_unused]] TimerThread::Timer* t)
 {
   timer_callback_was_called = true;
   timer_callback_thread_is_timer = TimerThread::CurrentThreadIsTimerThread();
 }
 
-void TimerThreadTest::TimerUserDestructorCallback(TimerThread::Timer* t)
+void TimerThreadTest::TimerUserDestructorCallback(
+    [[maybe_unused]] TimerThread::Timer* t)
 {
   user_destructor_was_called = true;
 }

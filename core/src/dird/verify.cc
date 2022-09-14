@@ -854,7 +854,9 @@ bail_out:
  *  that was not marked earlier. This means that the file in
  *  question is a missing file (in the Catalog but not on Disk).
  */
-static int MissingHandler(void* ctx, int num_fields, char** row)
+static int MissingHandler(void* ctx,
+                          [[maybe_unused]] int num_fields,
+                          char** row)
 {
   JobControlRecord* jcr = (JobControlRecord*)ctx;
 

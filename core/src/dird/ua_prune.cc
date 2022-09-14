@@ -48,7 +48,7 @@ static bool PruneStats(UaContext* ua, utime_t retention);
 static bool GrowDelList(del_ctx* del);
 
 // Called here to count entries to be deleted
-int DelCountHandler(void* ctx, int num_fields, char** row)
+int DelCountHandler(void* ctx, [[maybe_unused]] int num_fields, char** row)
 {
   s_count_ctx* cnt = static_cast<s_count_ctx*>(ctx);
 
@@ -68,7 +68,7 @@ int DelCountHandler(void* ctx, int num_fields, char** row)
  *  is allowed to get to MAX_DEL_LIST_LEN to limit the
  *  maximum malloc'ed memory.
  */
-int JobDeleteHandler(void* ctx, int num_fields, char** row)
+int JobDeleteHandler(void* ctx, [[maybe_unused]] int num_fields, char** row)
 {
   del_ctx* del = static_cast<del_ctx*>(ctx);
 
@@ -80,7 +80,7 @@ int JobDeleteHandler(void* ctx, int num_fields, char** row)
   return 0;
 }
 
-int FileDeleteHandler(void* ctx, int num_fields, char** row)
+int FileDeleteHandler(void* ctx, [[maybe_unused]] int num_fields, char** row)
 {
   del_ctx* del = static_cast<del_ctx*>(ctx);
 
@@ -126,7 +126,7 @@ static bool PruneAllVolumes(UaContext* ua,
 }
 
 // Prune records from database
-bool PruneCmd(UaContext* ua, const char* cmd)
+bool PruneCmd(UaContext* ua, [[maybe_unused]] const char* cmd)
 {
   ClientResource* client;
   PoolResource* pool;

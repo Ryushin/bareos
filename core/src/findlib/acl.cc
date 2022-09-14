@@ -824,11 +824,12 @@ bail_out:
 }
 
 // Generic wrapper around acl_set_file call.
-static bacl_exit_code generic_set_acl_on_os(JobControlRecord* jcr,
-                                            AclData* acl_data,
-                                            bacl_type acltype,
-                                            char* content,
-                                            uint32_t content_length)
+static bacl_exit_code generic_set_acl_on_os(
+    JobControlRecord* jcr,
+    AclData* acl_data,
+    bacl_type acltype,
+    char* content,
+    [[maybe_unused]] uint32_t content_length)
 {
   acl_t acl;
   acl_type_t ostype;
@@ -1243,9 +1244,10 @@ static int os_access_acl_streams[1] = {STREAM_ACL_HURD_ACCESS_ACL};
 static int os_default_acl_streams[1] = {STREAM_ACL_HURD_DEFAULT_ACL};
 #        endif
 
-static bacl_exit_code generic_build_acl_streams(JobControlRecord* jcr,
-                                                AclData* acl_data,
-                                                FindFilesPacket* ff_pkt)
+static bacl_exit_code generic_build_acl_streams(
+    JobControlRecord* jcr,
+    AclData* acl_data,
+    [[maybe_unused]] FindFilesPacket* ff_pkt)
 {
   // Read access ACLs for files, dirs and links
   if (generic_get_acl_from_os(jcr, acl_data, BACL_TYPE_ACCESS)

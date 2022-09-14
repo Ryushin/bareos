@@ -166,7 +166,7 @@ void BareosDb::PrintLockInfo(FILE* fp)
  *       string must be long enough (max 2*old+1) to hold
  *       the escaped output.
  */
-void BareosDb::EscapeString(JobControlRecord* jcr,
+void BareosDb::EscapeString([[maybe_unused]] JobControlRecord* jcr,
                             char* snew,
                             const char* old,
                             int len)
@@ -201,7 +201,9 @@ void BareosDb::EscapeString(JobControlRecord* jcr,
  * We base64 encode the data so its normal ASCII
  * Memory is stored in BareosDb struct, no need to free it.
  */
-char* BareosDb::EscapeObject(JobControlRecord* jcr, char* old, int len)
+char* BareosDb::EscapeObject([[maybe_unused]] JobControlRecord* jcr,
+                             char* old,
+                             int len)
 {
   const int MaxLength = Base64LengthUnpadded(len) + 1;
   esc_obj = CheckPoolMemorySize(esc_obj, MaxLength + 1);
@@ -215,7 +217,7 @@ char* BareosDb::EscapeObject(JobControlRecord* jcr, char* old, int len)
  * Unescape binary object
  * We base64 encode the data so its normal ASCII
  */
-void BareosDb::UnescapeObject(JobControlRecord* jcr,
+void BareosDb::UnescapeObject([[maybe_unused]] JobControlRecord* jcr,
                               char* from,
                               int32_t expected_len,
                               POOLMEM*& dest,

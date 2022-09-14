@@ -271,7 +271,7 @@ get_out:
  */
 bool StorageDaemonDeviceControlRecord::DirUpdateVolumeInfo(
     bool label,
-    bool update_LastWritten)
+ [[maybe_unused]]    bool update_LastWritten)
 {
   BareosSocket* dir = jcr->dir_bsock;
   VolumeCatalogInfo* vol = &dev->VolCatInfo;
@@ -629,7 +629,7 @@ bool DeviceControlRecord::DirAskSysopToMountVolume(int /*mode*/)
   return true;
 }
 
-bool DeviceControlRecord::DirGetVolumeInfo(enum get_vol_info_rw writing)
+bool DeviceControlRecord::DirGetVolumeInfo([[maybe_unused]] enum get_vol_info_rw writing)
 {
   Dmsg0(100, "Fake DirGetVolumeInfo\n");
   setVolCatName(VolumeName);

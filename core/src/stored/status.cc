@@ -108,7 +108,7 @@ static void OutputStatus(JobControlRecord* jcr,
   }
 }
 
-static void ListResources(StatusPacket* sp)
+static void ListResources([[maybe_unused]] StatusPacket* sp)
 {
   /* this has not been implemented */
 }

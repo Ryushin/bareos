@@ -50,7 +50,10 @@ static char OK_replicate[] = "3000 OK replicate data\n";
 
 /* Forward referenced functions */
 
-void PossibleIncompleteJob(JobControlRecord* jcr, int32_t last_file_index) {}
+void PossibleIncompleteJob([[maybe_unused]] JobControlRecord* jcr,
+                           [[maybe_unused]] int32_t last_file_index)
+{
+}
 
 // Append Data sent from File daemon
 bool DoAppendData(JobControlRecord* jcr, BareosSocket* bs, const char* what)

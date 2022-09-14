@@ -280,7 +280,7 @@ static s_kw compression_algorithms[]
 static void StoreAuthenticationType(LEX* lc,
                                     ResourceItem* item,
                                     int index,
-                                    int pass)
+                                    [[maybe_unused]] int pass)
 {
   int i;
 
@@ -331,7 +331,10 @@ static void StoreAutopassword(LEX* lc, ResourceItem* item, int index, int pass)
   }
 }
 
-static void StoreDeviceType(LEX* lc, ResourceItem* item, int index, int pass)
+static void StoreDeviceType(LEX* lc,
+                            ResourceItem* item,
+                            int index,
+                            [[maybe_unused]] int pass)
 {
   int i;
 
@@ -365,7 +368,10 @@ static void StoreMaxblocksize(LEX* lc, ResourceItem* item, int index, int pass)
 }
 
 // Store the IO direction on a certain device.
-static void StoreIoDirection(LEX* lc, ResourceItem* item, int index, int pass)
+static void StoreIoDirection(LEX* lc,
+                             ResourceItem* item,
+                             int index,
+                             [[maybe_unused]] int pass)
 {
   int i;
 
@@ -389,7 +395,7 @@ static void StoreIoDirection(LEX* lc, ResourceItem* item, int index, int pass)
 static void StoreCompressionalgorithm(LEX* lc,
                                       ResourceItem* item,
                                       int index,
-                                      int pass)
+                                      [[maybe_unused]] int pass)
 {
   int i;
 
@@ -437,11 +443,12 @@ static void InitResourceCb(ResourceItem* item, int pass)
   }
 }
 
-static void ParseConfigCb(LEX* lc,
-                          ResourceItem* item,
-                          int index,
-                          int pass,
-                          BareosResource** configuration_resources)
+static void ParseConfigCb(
+    LEX* lc,
+    ResourceItem* item,
+    int index,
+    int pass,
+    [[maybe_unused]] BareosResource** configuration_resources)
 {
   switch (item->type) {
     case CFG_TYPE_AUTOPASSWORD:
